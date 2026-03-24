@@ -1,7 +1,9 @@
 package com.learning.controller;
 
+import com.learning.dto.UserRequest;
 import com.learning.entity.User;
 import com.learning.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,8 +19,8 @@ public class UserController {
     }
 
     @PostMapping
-    public User create(@RequestBody User user) {
-        return userService.save(user);
+    public User createUser(@RequestBody @Valid UserRequest request) {
+        return userService.createUser(request);
     }
 
     @GetMapping
